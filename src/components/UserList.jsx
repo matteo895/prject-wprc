@@ -22,12 +22,12 @@ const UserList = () => {
   // Mostra la lista degli utenti
   return (
     <div>
-      <h2>Lista degli Utenti</h2>
+      <h2>LISTA UTENTI :</h2>
       <ul>
         {/* Mappa ogni utente per creare un elemento della lista */}
         {users.map((user) => (
           <li key={user.id}>
-            <h4 class="zoom4 px-1 py-1">{user.name}</h4>
+            <h4 class=" px-1 py-1">{user.name}</h4>
           </li>
         ))}
       </ul>

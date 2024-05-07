@@ -33,12 +33,14 @@ const PostDetail = () => {
 
   // Visualizza i dettagli del post
   return (
-    <div>
-      <h2>{post.title.rendered}</h2>
-      <p>Autore: {post._embedded.author[0].name}</p>
-      <p>Data di pubblicazione: {new Date(post.date).toLocaleString()}</p>
-      {/* Mostra il contenuto del post in formato HTML */}
-      <div dangerouslySetInnerHTML={{ __html: post.content.rendered }}></div>
+    <div class="cardt">
+      <div class="block text-center">
+        <h2 class="fs-1">{post.title.rendered}</h2>
+        {/* Mostra il contenuto del post in formato HTML */}
+        <div dangerouslySetInnerHTML={{ __html: post.content.rendered }}></div>
+        <p>Autore: {post._embedded.author[0].name}</p>
+        <p>Data di pubblicazione: {new Date(post.date).toLocaleString()}</p>
+      </div>
     </div>
   );
 };

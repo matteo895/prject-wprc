@@ -12,8 +12,8 @@ const App = () => {
   return (
     <Router>
       <div className="container">
-        <h1 className="mt-4 mb-4 text-center">
-          Applicazione React con WordPress API
+        <h1 className="mt-4 mb-4 text-center title">
+          APPLICAZIONE REACT CON WORDPRESS API
         </h1>
         <div className="row">
           <div className="col-12">
@@ -27,12 +27,10 @@ const App = () => {
             <div className="row">
               <div className="col-6 ">
                 <UserList />
-              </div>
-              <div className="col-6">
-                <ResponseHandler />
-              </div>
-              <div className="col-12 ">
                 <BackButton />
+              </div>
+              <div className="col-6 text-end mb-5">
+                <ResponseHandler />
               </div>
             </div>
           </div>

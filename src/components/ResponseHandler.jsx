@@ -24,7 +24,7 @@ const ResponseHandler = () => {
         Gestisci Risposta
       </button>
       {/* Mostra la risposta gestita */}
-      <p class="zoom4 px-2 py-2">{response}</p>
+      <p class="decoration2 px-2 py-2">{response}</p>
     </div>
   );
 };

@@ -25,7 +25,7 @@ const PostList = () => {
 
   return (
     <div>
-      <h2 className="text-center">Lista dei Post</h2>
+      <h2 className="text-center title">LISTA DEI POST</h2>
       <div class="cardt">
         <ul>
           {/* Itera sui post e crea un elemento per ciascuno */}
@@ -43,7 +43,7 @@ const PostList = () => {
                   src={post._embedded["wp:featuredmedia"][0].source_url}
                   alt={post._embedded["wp:featuredmedia"][0].alt_text}
                   style={{ maxWidth: "40rem", height: "auto" }}
-                  class="mb-3 mt-2 "
+                  class="mb-3 mt-2 image"
                 />
               )}
               {/* Mostra l'estratto del post */}
