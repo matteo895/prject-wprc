@@ -26,14 +26,16 @@ const PostList = () => {
   return (
     <div>
       <h2 className="text-center">Lista dei Post</h2>
-      <div>
+      <div class="cardt">
         <ul>
           {/* Itera sui post e crea un elemento per ciascuno */}
           {posts.map((post) => (
-            <li key={post.id}>
+            <li key={post.id} class="block text-center">
               <h3>
                 {/* Link che porta al dettaglio del post */}
-                <Link to={`/post/${post.id}`}>{post.title.rendered}</Link>
+                <Link class="decoration" to={`/post/${post.id}`}>
+                  {post.title.rendered}
+                </Link>
               </h3>
               {/* Mostra l'immagine di copertina se presente */}
               {post._embedded && post._embedded["wp:featuredmedia"] && (
@@ -41,17 +43,18 @@ const PostList = () => {
                   src={post._embedded["wp:featuredmedia"][0].source_url}
                   alt={post._embedded["wp:featuredmedia"][0].alt_text}
                   style={{ maxWidth: "40rem", height: "auto" }}
-                  className="mb-3 mt-2"
+                  class="mb-3 mt-2 "
                 />
               )}
               {/* Mostra l'estratto del post */}
               <p
+                class=""
                 dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}
               ></p>
               {/* Mostra l'autore del post */}
-              <p>Autore: {post._embedded.author[0].name}</p>
+              <p class="">Autore: {post._embedded.author[0].name}</p>
               {/* Mostra la data di pubblicazione formattata */}
-              <p>
+              <p class="">
                 Data di pubblicazione: {new Date(post.date).toLocaleString()}
               </p>
             </li>
