@@ -1,14 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const BackButton = () => {
+const BackButton = ({ onClick }) => {
   return (
-    <button className="btn btn-primary mb-3 " type="submit">
-      {/* Utilizza il componente Link per creare un link alla pagina principale */}
-      <Link to="/" className="text-white nav-link">
+    <Link to="/">
+      <button className="btn btn-primary mb-3 " type="submit" onClick={onClick}>
+        {/* Utilizza il componente Link per creare un link alla pagina principale */}
         Torna alla lista dei post
-      </Link>
-    </button>
+      </button>
+    </Link>
   );
 };
 

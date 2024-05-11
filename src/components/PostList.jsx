@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import SearchForm from "./SearchForm";
+import BackButton from "./BackButton"; // Importa il componente BackButton
 
 const PostList = () => {
   const [posts, setPosts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [showBackButton, setShowBackButton] = useState(false);
 
   const fetchPosts = (searchQuery) => {
     let apiUrl =
@@ -12,6 +14,9 @@ const PostList = () => {
 
     if (searchQuery) {
       apiUrl += `&search=${searchQuery}`;
+      setShowBackButton(true); // Mostra il pulsante "Indietro" quando viene effettuata la ricerca
+    } else {
+      setShowBackButton(false); // Nascondi il pulsante "Indietro" quando si torna alla pagina principale
     }
 
     fetch(apiUrl)
@@ -32,10 +37,19 @@ const PostList = () => {
     setSearchTerm(query);
   };
 
+  const handleBackButtonClick = () => {
+    // Logica per tornare alla pagina precedente dopo la ricerca
+    setSearchTerm(""); // Resettare il termine di ricerca
+  };
+
   return (
     <div>
       <div className="mb-4">
         <SearchForm handleSearch={handleSearch} />
+      </div>
+      <div className="text-center mb-3">
+        {showBackButton && <BackButton onClick={handleBackButtonClick} />}{" "}
+        {/* Mostra il pulsante "Indietro" solo quando è necessario */}
       </div>
       <h2 className="text-center title">LISTA DEI POST</h2>
       <div className="cardt">

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import BackButton from "./BackButton";
 
 const SearchForm = ({ handleSearch }) => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -18,7 +19,7 @@ const SearchForm = ({ handleSearch }) => {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
-      <button className="btn btn-outline-success" type="submit">
+      <button className="btn btn-primary" type="submit">
         Search
       </button>
     </form>

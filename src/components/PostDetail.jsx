@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import ResponseHandler from "./ResponseHandler";
 import UserList from "./UserList";
 import BackButton from "./BackButton";
@@ -28,12 +28,16 @@ const PostDetail = () => {
   return (
     <div className="cardt">
       <div className="block text-center">
-        <h2 className="fs-1">{post.title.rendered}</h2>
+        <h2 className=" decoration4">{post.title.rendered}</h2>
         <div dangerouslySetInnerHTML={{ __html: post.content.rendered }}></div>
-        <p>Autore: {post._embedded.author[0].name}</p>
-        <p>Data di pubblicazione: {new Date(post.date).toLocaleString()}</p>
-        <UserList />
-        <ResponseHandler />
+        <p className="decoration5">Autore: {post._embedded.author[0].name}</p>
+        <p className="decoration5">
+          Data di pubblicazione: {new Date(post.date).toLocaleString()}
+        </p>
+        <div className="cardt2 d-flex justify-content-between">
+          <UserList />
+          <ResponseHandler />
+        </div>
         <BackButton />
       </div>
     </div>
