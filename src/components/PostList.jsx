@@ -1,62 +1,66 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import SearchForm from "./SearchForm";
 
-// Componente per visualizzare una lista di post
 const PostList = () => {
-  // Stato per memorizzare i post ottenuti dall'API
   const [posts, setPosts] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
-  // Effetto che si attiva al caricamento del componente
-  useEffect(() => {
-    // Effettua una chiamata all'API per ottenere i post
-    fetch(
-      "http://localhost/project_wp_react/wordpress/wp-json/wp/v2/posts?_embed"
-    )
+  const fetchPosts = (searchQuery) => {
+    let apiUrl =
+      "http://localhost/project_wp_react/wordpress/wp-json/wp/v2/posts?_embed";
+
+    if (searchQuery) {
+      apiUrl += `&search=${searchQuery}`;
+    }
+
+    fetch(apiUrl)
       .then((response) => response.json())
       .then((data) => {
-        // Aggiorna lo stato con i post ottenuti
         setPosts(data);
       })
       .catch((error) => {
-        // Gestione degli errori
         console.error("Errore nella richiesta API:", error);
       });
-  }, []);
+  };
+
+  useEffect(() => {
+    fetchPosts(searchTerm);
+  }, [searchTerm]);
+
+  const handleSearch = (query) => {
+    setSearchTerm(query);
+  };
 
   return (
     <div>
+      <div className="mb-4">
+        <SearchForm handleSearch={handleSearch} />
+      </div>
       <h2 className="text-center title">LISTA DEI POST</h2>
-      <div class="cardt">
+      <div className="cardt">
         <ul>
-          {/* Itera sui post e crea un elemento per ciascuno */}
           {posts.map((post) => (
-            <li key={post.id} class="block text-center">
+            <li key={post.id} className="block text-center">
               <h3>
-                {/* Link che porta al dettaglio del post */}
-                <Link class="decoration" to={`/post/${post.id}`}>
+                <Link className="decoration" to={`/post/${post.id}`}>
                   {post.title.rendered}
                 </Link>
               </h3>
-              {/* Mostra l'immagine di copertina se presente */}
+              {/* Mostra l'immagine in anteprima se presente */}
               {post._embedded && post._embedded["wp:featuredmedia"] && (
                 <img
                   src={post._embedded["wp:featuredmedia"][0].source_url}
                   alt={post._embedded["wp:featuredmedia"][0].alt_text}
-                  style={{ maxWidth: "40rem", height: "auto" }}
-                  class="mb-3 mt-2 image"
+                  style={{ maxWidth: "100%", height: "auto" }}
+                  className="mb-3 mt-2 image"
                 />
               )}
-              {/* Mostra l'estratto del post */}
+              {/* Mostra l'anteprima del post */}
               <p
-                class=""
                 dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}
               ></p>
-              {/* Mostra l'autore del post */}
-              <p class="">Autore: {post._embedded.author[0].name}</p>
-              {/* Mostra la data di pubblicazione formattata */}
-              <p class="">
-                Data di pubblicazione: {new Date(post.date).toLocaleString()}
-              </p>
+              {/* Altri dettagli del post come autore, data, ecc. */}
             </li>
           ))}
         </ul>

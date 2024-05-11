@@ -18,13 +18,13 @@ const ResponseHandler = () => {
       {/* Bottone per gestire la risposta */}
       <button
         onClick={handleResponse}
-        class="btn btn-primary mb-3 mt-3 "
+        className="btn btn-primary mb-3 mt-3 "
         type="submit"
       >
         Gestisci Risposta
       </button>
       {/* Mostra la risposta gestita */}
-      <p class="decoration2 px-2 py-2">{response}</p>
+      <p className="decoration2 px-2 py-2">{response}</p>
     </div>
   );
 };
