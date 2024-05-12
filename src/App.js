@@ -9,7 +9,7 @@ const App = () => {
   return (
     <Router>
       <div className="container">
-        <h1 className="mt-4 mb-4 text-center title">
+        <h1 className="mt-5 mb-4 text-center title">
           APPLICAZIONE REACT CON WORDPRESS API
         </h1>
         <div className="row">

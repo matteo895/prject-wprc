@@ -28,13 +28,18 @@ const PostDetail = () => {
   return (
     <div className="cardt">
       <div className="block text-center">
-        <h2 className=" decoration4">{post.title.rendered}</h2>
-        <div dangerouslySetInnerHTML={{ __html: post.content.rendered }}></div>
-        <p className="decoration5">Autore: {post._embedded.author[0].name}</p>
-        <p className="decoration5">
-          Data di pubblicazione: {new Date(post.date).toLocaleString()}
+        <h2 className=" decoration4 mt-3 mb-3">{post.title.rendered}</h2>
+        <div
+          className="decoration6"
+          dangerouslySetInnerHTML={{ __html: post.content.rendered }}
+        ></div>
+        <p className="decoration5 mt-5">
+          AUTORE: {post._embedded.author[0].name}
         </p>
-        <div className="cardt2 d-flex justify-content-between">
+        <p className="decoration5">
+          DATA DI PUBBLICAZIONE: {new Date(post.date).toLocaleString()}
+        </p>
+        <div className="cardt2 d-flex justify-content-between ">
           <UserList />
           <ResponseHandler />
         </div>

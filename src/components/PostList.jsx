@@ -43,7 +43,7 @@ const PostList = () => {
   };
 
   return (
-    <div>
+    <div className="mb-5 ">
       <div className="mb-4">
         <SearchForm handleSearch={handleSearch} />
       </div>
@@ -52,10 +52,10 @@ const PostList = () => {
         {/* Mostra il pulsante "Indietro" solo quando è necessario */}
       </div>
       <h2 className="text-center title">LISTA DEI POST</h2>
-      <div className="cardt">
-        <ul>
+      <div className="cardt mb-5">
+        <ul className="decoration3">
           {posts.map((post) => (
-            <li key={post.id} className="block text-center">
+            <li key={post.id} className="block text-center ">
               <h3>
                 <Link className="decoration" to={`/post/${post.id}`}>
                   {post.title.rendered}
@@ -67,7 +67,7 @@ const PostList = () => {
                   src={post._embedded["wp:featuredmedia"][0].source_url}
                   alt={post._embedded["wp:featuredmedia"][0].alt_text}
                   style={{ maxWidth: "100%", height: "auto" }}
-                  className="mb-3 mt-2 image"
+                  className="mb-4 mt-3 image"
                 />
               )}
               {/* Mostra l'anteprima del post */}

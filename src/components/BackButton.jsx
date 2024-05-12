@@ -6,7 +6,7 @@ const BackButton = ({ onClick }) => {
     <Link to="/">
       <button className="btn btn-primary mb-3 " type="submit" onClick={onClick}>
         {/* Utilizza il componente Link per creare un link alla pagina principale */}
-        Torna alla lista dei post
+        TORNA ALLA LISTA DEI POST
       </button>
     </Link>
   );

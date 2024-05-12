@@ -1,7 +1,7 @@
 /* src/App.css */
 body {
   font-family: Arial, sans-serif;
-  background-color: aquamarine;
+  background-color: black;
 }
 
 h1 {
@@ -40,16 +40,17 @@ button:hover {
   margin: 2rem 0rem;
   padding: 1rem 0rem;
   box-shadow: 3px 5px 5px 8px rgb(100, 100, 100);
+  background-color: black;
 }
 
 .cardt2 {
   border: 1px solid black;
-  border-radius: 2rem;
+  border-radius: 1.5rem;
   margin: 2rem;
-  padding: 1rem;
+  padding: 1rem 2rem;
   box-shadow: 3px 5px 5px 8px rgb(100, 100, 100);
-  background-color: rgb(4, 152, 210);
   color: white;
+  background-color: rgb(88, 178, 243);
 }
 
 .block {
@@ -100,9 +101,16 @@ button:hover {
 
 .decoration5 {
   font-weight: bold;
+  color: black;
 }
 
 .title {
   background-color: aqua;
   font-weight: bold;
+}
+
+.decoration6:hover {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: black;
 }
