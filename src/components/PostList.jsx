@@ -4,10 +4,13 @@ import SearchForm from "./SearchForm";
 import BackButton from "./BackButton"; // Importa il componente BackButton
 
 const PostList = () => {
+  // Stati per i post, il termine di ricerca e la visibilità del pulsante "Indietro"
   const [posts, setPosts] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [showBackButton, setShowBackButton] = useState(false);
+  const [searchMessage, setSearchMessage] = useState(""); // stato per messaggio ricerca
 
+  // Funzione per recuperare i post in base al termine di ricerca
   const fetchPosts = (searchQuery) => {
     let apiUrl =
       "http://localhost/project_wp_react/wordpress/wp-json/wp/v2/posts?_embed";
@@ -23,27 +26,37 @@ const PostList = () => {
       .then((response) => response.json())
       .then((data) => {
         setPosts(data);
+
+        //imposta il mess di ricerca in base alla lunghezza dei risultati
+        if (data.length === 0) {
+          setSearchMessage("NESSUN POST TROVATO");
+        } else {
+          setSearchMessage("");
+        }
       })
       .catch((error) => {
         console.error("Errore nella richiesta API:", error);
       });
   };
 
+  // Effetto per chiamare fetchPosts quando cambia il termine di ricerca
   useEffect(() => {
     fetchPosts(searchTerm);
   }, [searchTerm]);
 
+  // Gestisce il termine di ricerca
   const handleSearch = (query) => {
     setSearchTerm(query);
   };
 
+  // Gestisce il click sul pulsante "Indietro"
   const handleBackButtonClick = () => {
-    // Logica per tornare alla pagina precedente dopo la ricerca
     setSearchTerm(""); // Resettare il termine di ricerca
   };
 
+  // Renderizza il componente
   return (
-    <div className="mb-5 ">
+    <div className="mb-5">
       <div className="mb-4">
         <SearchForm handleSearch={handleSearch} />
       </div>
@@ -52,8 +65,15 @@ const PostList = () => {
         {/* Mostra il pulsante "Indietro" solo quando è necessario */}
       </div>
       <h2 className="text-center title">LISTA DEI POST</h2>
+      {searchMessage && (
+        <p className="text-center fs-4 bg-danger text-white mt-5 py-2">
+          {searchMessage}
+        </p>
+      )}
+      {/*mostra il messaggio di ricerca*/}
       <div className="cardt mb-5">
         <ul className="decoration3">
+          {/* Mappa attraverso i post e mostra i dettagli */}
           {posts.map((post) => (
             <li key={post.id} className="block text-center ">
               <h3>
